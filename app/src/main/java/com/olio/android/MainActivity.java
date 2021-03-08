@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         text = (TextView) findViewById(R.id.textView);
         edit = (EditText) findViewById(R.id.input);
+        //Monitor input to text box and update textView on text change
         edit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
