@@ -24,10 +24,11 @@ public class MainActivity extends Activity {
         input = (EditText) findViewById(R.id.input);
         fileinput = (EditText) findViewById(R.id.fileinput);
         context = MainActivity.this;
+        //Prints files directory location to console to make it easier to find files
         System.out.println("Files location: " + context.getFilesDir());
         }
 
-
+//Open file with filename from filename input box and read its contents to input box
     public void readFile(View v){
         try{
             InputStream is = context.openFileInput(fileinput.getText().toString());
@@ -35,14 +36,14 @@ public class MainActivity extends Activity {
             String temp;
             input.setText("");
             while ((temp = br.readLine()) != null){
-                input.append(temp);
+                input.append(temp + "\n");
             }
             is.close();
         } catch (IOException e){
             Log.e("IOException", "Faulty input.");
         }
     }
-
+//Save contents of input box to file with filename from filename input box
     public void writeFile(View v){
         try{
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(fileinput.getText().toString(), Context.MODE_PRIVATE));
